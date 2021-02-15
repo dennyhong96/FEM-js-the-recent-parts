@@ -16,6 +16,7 @@ function handleResponse({
 	topic = "JavsScript",
 	format = "Live",
 	slides: { start = 0, end = 100 } = {},
+	...rest
 }) {
 	TestCase({
 		/* restructuring here */
@@ -25,6 +26,7 @@ function handleResponse({
 			start,
 			end,
 		},
+		...rest,
 	});
 }
 
