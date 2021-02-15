@@ -13,13 +13,29 @@ especially yours can heal a frozen heart`;
 for (let power of powers(poem)) {
 	console.log(power);
 }
+
+function* powers(poem) {
+	const re = /(?<=power of )(?<thing>(a )?\w+).*?(?<=can )(?<verb>\w+)/gs;
+
+	let match;
+	while (true) {
+		match = re.exec(poem);
+
+		if (!match) return;
+
+		const {
+			groups: { thing, verb },
+		} = match;
+		yield `${thing}: ${verb}`;
+	}
+}
+
 // a gun: kill
 // fire: burn
 // wind: chill
 // a mind: learn
 // anger: rage
 // smile: heal
-
 
 // Hints:
 //
